@@ -1,266 +1,102 @@
 const leagueTableDatabase = {
 
-    getPlTable: function(){
+    getTable: function(url){
         $('.BigTable').empty();
         $.ajax({
         method:'GET',
-        url: 'http://api.football-data.org/v1/competitions/426/leagueTable',
+        url: url,
         headers: {
             'X-Auth-Token': 'bc1c9459624a4143a7d7e78e5e00e85b'
         },
         success: (response) => {
         data = response;
         $.each(data.standing, function(key, value){
-            $('.BigTable').append("<tr><th scope='row'>"+value.position+"</th><td><img src='"+value.crestURI+"'/>"+value.teamName+"</td><td>"+value.points+"</td><td>"+value.playedGames+"</td><td>"+value.wins+"</td><td>"+value.draws+"</td><td>"+value.losses+"</td></tr>");
+            var classes = 'crest';
+            if(!value.crestURI || value.crestURI === 'null'){
+                classes = '';
+                value.crestURI = '';
+            }
+            $('.BigTable').append("<tr><th scope='row'>"+value.position+"</th><td><img class='"+classes+"' src='"+value.crestURI+ "'/>"+value.teamName+"</td><td>"+value.points+"</td><td>"+value.playedGames+"</td><td>"+value.wins+"</td><td>"+value.draws+"</td><td>"+value.losses+"</td></tr>");
             });
         },
             error: function(error){
-
+                console.log("det blev fel LOL" + error);
             }
         });
+    },
+
+    getPlTable: function(url){
+        leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/426/leagueTable');
     },
 
     getCsTable: function(){
-        $('.BigTable').empty();
-        $.ajax({
-        method:'GET',
-        url: 'http://api.football-data.org/v1/competitions/427/leagueTable',
-        headers: {
-            'X-Auth-Token': 'bc1c9459624a4143a7d7e78e5e00e85b'
-        },
-        success: (response) => {
-        data = response;
-        $.each(data.standing, function(key, value){
-            $('.BigTable').append("<tr><th scope='row'>"+value.position+"</th><td><img src='"+value.crestURI+"'/>"+value.teamName+"</td><td>"+value.points+"</td><td>"+value.playedGames+"</td><td>"+value.wins+"</td><td>"+value.draws+"</td><td>"+value.losses+"</td></tr>");
-            });
-        },
-            error: function(error){
-
-            }
-        });
+        leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/427/leagueTable');
     },
     
     getLoneTable: function(){
-        $('.BigTable').empty();
-        $.ajax({
-        method:'GET',
-        url: 'http://api.football-data.org/v1/competitions/428/leagueTable',
-        headers: {
-            'X-Auth-Token': 'bc1c9459624a4143a7d7e78e5e00e85b'
-        },
-        success: (response) => {
-        data = response;
-        $.each(data.standing, function(key, value){
-            $('.BigTable').append("<tr><th scope='row'>"+value.position+"</th><td><img src='"+value.crestURI+"'/>"+value.teamName+"</td><td>"+value.points+"</td><td>"+value.playedGames+"</td><td>"+value.wins+"</td><td>"+value.draws+"</td><td>"+value.losses+"</td></tr>");
-            });
-        },
-            error: function(error){
-
-            }
-        });
+        leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/428/leagueTable');
     },
 
     getBund1Table: function(){
-        $('.BigTable').empty();
-        $.ajax({
-        method:'GET',
-        url: 'http://api.football-data.org/v1/competitions/430/leagueTable',
-        headers: {
-            'X-Auth-Token': 'bc1c9459624a4143a7d7e78e5e00e85b'
-        },
-        success: (response) => {
-        data = response;
-        $.each(data.standing, function(key, value){
-            $('.BigTable').append("<tr><th scope='row'>"+value.position+"</th><td><img src='"+value.crestURI+"'/>"+value.teamName+"</td><td>"+value.points+"</td><td>"+value.playedGames+"</td><td>"+value.wins+"</td><td>"+value.draws+"</td><td>"+value.losses+"</td></tr>");
-            });
-        },
-            error: function(error){
-
-            }
-        });
+        leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/430/leagueTable');
     },   
-    
-    getBund1Table: function(){
-        $('.BigTable').empty();
-        $.ajax({
-        method:'GET',
-        url: 'http://api.football-data.org/v1/competitions/430/leagueTable',
-        headers: {
-            'X-Auth-Token': 'bc1c9459624a4143a7d7e78e5e00e85b'
-        },
-        success: (response) => {
-        data = response;
-        $.each(data.standing, function(key, value){
-            $('.BigTable').append("<tr><th scope='row'>"+value.position+"</th><td><img src='"+value.crestURI+"'/>"+value.teamName+"</td><td>"+value.points+"</td><td>"+value.playedGames+"</td><td>"+value.wins+"</td><td>"+value.draws+"</td><td>"+value.losses+"</td></tr>");
-            });
-        },
-            error: function(error){
-
-            }
-        });
-    },
 
     getBund2Table: function(){
-        $('.BigTable').empty();
-        $.ajax({
-        method:'GET',
-        url: 'http://api.football-data.org/v1/competitions/431/leagueTable',
-        headers: {
-            'X-Auth-Token': 'bc1c9459624a4143a7d7e78e5e00e85b'
-        },
-        success: (response) => {
-        data = response;
-        $.each(data.standing, function(key, value){
-            $('.BigTable').append("<tr><th scope='row'>"+value.position+"</th><td><img src='"+value.crestURI+"'/>"+value.teamName+"</td><td>"+value.points+"</td><td>"+value.playedGames+"</td><td>"+value.wins+"</td><td>"+value.draws+"</td><td>"+value.losses+"</td></tr>");
-            });
-        },
-            error: function(error){
-
-            }
-        });
+        leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/431/leagueTable');
     },
 
     getErdTable: function(){
-        $('.BigTable').empty();
-        $.ajax({
-        method:'GET',
-        url: 'http://api.football-data.org/v1/competitions/433/leagueTable',
-        headers: {
-            'X-Auth-Token': 'bc1c9459624a4143a7d7e78e5e00e85b'
-        },
-        success: (response) => {
-        data = response;
-        $.each(data.standing, function(key, value){
-            $('.BigTable').append("<tr><th scope='row'>"+value.position+"</th><td><img src='"+value.crestURI+"'/>"+value.teamName+"</td><td>"+value.points+"</td><td>"+value.playedGames+"</td><td>"+value.wins+"</td><td>"+value.draws+"</td><td>"+value.losses+"</td></tr>");
-            });
-        },
-            error: function(error){
-
-            }
-        });
+        leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/433/leagueTable');
     },
 
     getLig1Table: function(){
-        $('.BigTable').empty();
-        $.ajax({
-        method:'GET',
-        url: 'http://api.football-data.org/v1/competitions/434/leagueTable',
-        headers: {
-            'X-Auth-Token': 'bc1c9459624a4143a7d7e78e5e00e85b'
-        },
-        success: (response) => {
-        data = response;
-        $.each(data.standing, function(key, value){
-            $('.BigTable').append("<tr><th scope='row'>"+value.position+"</th><td><img src='"+value.crestURI+"'/>"+value.teamName+"</td><td>"+value.points+"</td><td>"+value.playedGames+"</td><td>"+value.wins+"</td><td>"+value.draws+"</td><td>"+value.losses+"</td></tr>");
-            });
-        },
-            error: function(error){
-
-            }
-        });
+        leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/434/leagueTable');
     },
 
     getLig2Table: function(){
-        $('.BigTable').empty();
-        $.ajax({
-        method:'GET',
-        url: 'http://api.football-data.org/v1/competitions/435/leagueTable',
-        headers: {
-            'X-Auth-Token': 'bc1c9459624a4143a7d7e78e5e00e85b'
-        },
-        success: (response) => {
-        data = response;
-        $.each(data.standing, function(key, value){
-            $('.BigTable').append("<tr><th scope='row'>"+value.position+"</th><td><img src='"+value.crestURI+"'/>"+value.teamName+"</td><td>"+value.points+"</td><td>"+value.playedGames+"</td><td>"+value.wins+"</td><td>"+value.draws+"</td><td>"+value.losses+"</td></tr>");
-            });
-        },
-            error: function(error){
-
-            }
-        });
+        leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/435/leagueTable');
     },
 
     getLaligaTable: function(){
-        $('.BigTable').empty();
-        $.ajax({
-        method:'GET',
-        url: 'http://api.football-data.org/v1/competitions/436/leagueTable',
-        headers: {
-            'X-Auth-Token': 'bc1c9459624a4143a7d7e78e5e00e85b'
-        },
-        success: (response) => {
-        data = response;
-        $.each(data.standing, function(key, value){
-            $('.BigTable').append("<tr><th scope='row'>"+value.position+"</th><td><img src='"+value.crestURI+"'/>"+value.teamName+"</td><td>"+value.points+"</td><td>"+value.playedGames+"</td><td>"+value.wins+"</td><td>"+value.draws+"</td><td>"+value.losses+"</td></tr>");
-            });
-        },
-            error: function(error){
-
-            }
-        });
+        leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/436/leagueTable');
     },
 
     getAdelanteTable: function(){
-        $('.BigTable').empty();
-        $.ajax({
-        method:'GET',
-        url: 'http://api.football-data.org/v1/competitions/437/leagueTable',
-        headers: {
-            'X-Auth-Token': 'bc1c9459624a4143a7d7e78e5e00e85b'
-        },
-        success: (response) => {
-        data = response;
-        $.each(data.standing, function(key, value){
-            $('.BigTable').append("<tr><th scope='row'>"+value.position+"</th><td><img src='"+value.crestURI+"'/>"+value.teamName+"</td><td>"+value.points+"</td><td>"+value.playedGames+"</td><td>"+value.wins+"</td><td>"+value.draws+"</td><td>"+value.losses+"</td></tr>");
-            });
-        },
-            error: function(error){
-
-            }
-        });
+        leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/437/leagueTable');
     },
 
     getSerieATable: function(){
-        $('.BigTable').empty();
-        $.ajax({
-        method:'GET',
-        url: 'http://api.football-data.org/v1/competitions/438/leagueTable',
-        headers: {
-            'X-Auth-Token': 'bc1c9459624a4143a7d7e78e5e00e85b'
-        },
-        success: (response) => {
-        data = response;
-        $.each(data.standing, function(key, value){
-            $('.BigTable').append("<tr><th scope='row'>"+value.position+"</th><td><img src='"+value.crestURI+"'/>"+value.teamName+"</td><td>"+value.points+"</td><td>"+value.playedGames+"</td><td>"+value.wins+"</td><td>"+value.draws+"</td><td>"+value.losses+"</td></tr>");
-            });
-        },
-            error: function(error){
-
-            }
-        });
+        leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/438/leagueTable');
     },
 
     getPrimLigaTable: function(){
-        $('.BigTable').empty();
+        leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/439/leagueTable');
+    }
+};
+
+const fixturesDataBase = {
+    getCsFixtures: function (){
         $.ajax({
-        method:'GET',
-        url: 'http://api.football-data.org/v1/competitions/439/leagueTable',
-        headers: {
+            method:'GET',
+            url: 'http://api.football-data.org/v1/fixtures/',
+            headers: {
             'X-Auth-Token': 'bc1c9459624a4143a7d7e78e5e00e85b'
         },
         success: (response) => {
-        data = response;
-        $.each(data.standing, function(key, value){
-            $('.BigTable').append("<tr><th scope='row'>"+value.position+"</th><td><img src='"+value.crestURI+"'/>"+value.teamName+"</td><td>"+value.points+"</td><td>"+value.playedGames+"</td><td>"+value.wins+"</td><td>"+value.draws+"</td><td>"+value.losses+"</td></tr>");
+            data = response;
+            console.log(data);
+            $.each(data.fixtures, function(key, value){
+                let comp = value._links.competition.href;
+                if(comp.indexOf('428') > -1){
+                    $('#fixtures').append('<li>'+value.homeTeamName+ ' VS ' +value.awayTeamName+'</li>');
+                }
             });
-        },
-            error: function(error){
-
-            }
-        });
-    },
+        }            
+        })
+    }
 };
 
+fixturesDataBase.getCsFixtures();
 
 $( document ).ready(function() {
     document.getElementById('champ').addEventListener('click', leagueTableDatabase.getCsTable);
@@ -276,4 +112,5 @@ $( document ).ready(function() {
     document.getElementById('seria').addEventListener('click', leagueTableDatabase.getSerieATable);
     document.getElementById('primliga').addEventListener('click', leagueTableDatabase.getPrimLigaTable);
 });
+
 
