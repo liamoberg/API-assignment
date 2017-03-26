@@ -25,57 +25,70 @@ const leagueTableDatabase = {
         });
     },
 
-    getPlTable: function(url){
+    getPlTable: function(){
         leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/426/leagueTable');
+        fixturesDataBase.getPlFixtures();
     },
 
     getCsTable: function(){
         leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/427/leagueTable');
+        fixturesDataBase.getCsFixtures();
     },
     
     getLoneTable: function(){
         leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/428/leagueTable');
+        fixturesDataBase.getLoneFixtures();
     },
 
     getBund1Table: function(){
         leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/430/leagueTable');
+        fixturesDataBase.getBund1Fixtures();
     },   
 
     getBund2Table: function(){
         leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/431/leagueTable');
+        fixturesDataBase.getBund2Fixtures();
     },
 
     getErdTable: function(){
         leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/433/leagueTable');
+        fixturesDataBase.getErdFixtures();
     },
 
     getLig1Table: function(){
         leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/434/leagueTable');
+        fixturesDataBase.getLig1Fixtures();
     },
 
     getLig2Table: function(){
         leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/435/leagueTable');
+        fixturesDataBase.getLig2Fixtures();
     },
 
     getLaligaTable: function(){
         leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/436/leagueTable');
+        fixturesDataBase.getLaligaFixtures();
     },
 
     getAdelanteTable: function(){
         leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/437/leagueTable');
+        fixturesDataBase.getAdelanteFixtures();
     },
 
     getSerieATable: function(){
         leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/438/leagueTable');
+        fixturesDataBase.getSerieAFixtures();
     },
 
     getPrimLigaTable: function(){
         leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/439/leagueTable');
+        fixturesDataBase.getPrimLigaFixtures();
     }
 };
 
 const fixturesDataBase = {
-    getCsFixtures: function (){
+    getFixtures: function (id){
+        $('.fixtures').empty();
         $.ajax({
             method:'GET',
             url: 'http://api.football-data.org/v1/fixtures/',
@@ -87,16 +100,62 @@ const fixturesDataBase = {
             console.log(data);
             $.each(data.fixtures, function(key, value){
                 let comp = value._links.competition.href;
-                if(comp.indexOf('428') > -1){
-                    $('#fixtures').append('<li>'+value.homeTeamName+ ' VS ' +value.awayTeamName+'</li>');
+                if(comp.indexOf(id) > -1){
+                    $('.fixtures').append('<li>'+value.homeTeamName+ ' - ' +value.awayTeamName+ '</li>');
                 }
             });
         }            
         })
-    }
-};
+    },
 
-fixturesDataBase.getCsFixtures();
+    getPlFixtures: function(){
+        fixturesDataBase.getFixtures('426');
+    },
+
+    getCsFixtures: function(){
+        fixturesDataBase.getFixtures('427');
+    },
+
+    getLoneFixtures: function(){
+        fixturesDataBase.getFixtures('428');
+    },
+
+    getBund1Fixtures: function(){
+        fixturesDataBase.getFixtures('430');
+    },
+    
+    getBund2Fixtures: function(){
+        fixturesDataBase.getFixtures('431');
+    },
+
+    getErdFixtures: function(){
+        fixturesDataBase.getFixtures('433');
+    },
+
+    getLig1Fixtures: function(){
+        fixturesDataBase.getFixtures('434');
+    },
+
+    getLig2Fixtures: function(){
+        fixturesDataBase.getFixtures('435');
+    },
+
+    getLaligaFixtures: function(){
+        fixturesDataBase.getFixtures('436');
+    },
+
+    getAdelanteFixtures: function(){
+        fixturesDataBase.getFixtures('437');
+    },
+
+    getSerieAFixtures: function(){
+        fixturesDataBase.getFixtures('438');
+    },
+
+    getPrimLigaFixtures: function(){
+        fixturesDataBase.getFixtures('439');
+    },
+};
 
 $( document ).ready(function() {
     document.getElementById('champ').addEventListener('click', leagueTableDatabase.getCsTable);
@@ -109,7 +168,7 @@ $( document ).ready(function() {
     document.getElementById('lig2').addEventListener('click', leagueTableDatabase.getLig2Table);
     document.getElementById('laliga').addEventListener('click', leagueTableDatabase.getLaligaTable);
     document.getElementById('adelante').addEventListener('click', leagueTableDatabase.getAdelanteTable);
-    document.getElementById('seria').addEventListener('click', leagueTableDatabase.getSerieATable);
+    document.getElementById('seriea').addEventListener('click', leagueTableDatabase.getSerieATable);
     document.getElementById('primliga').addEventListener('click', leagueTableDatabase.getPrimLigaTable);
 });
 
