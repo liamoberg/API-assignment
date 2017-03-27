@@ -8,8 +8,7 @@ const leagueTableDatabase = {
         headers: {
             'X-Auth-Token': 'bc1c9459624a4143a7d7e78e5e00e85b'
         },
-        success: (response) => {
-        data = response;
+        success: (data) => {
         $.each(data.standing, function(key, value){
             var classes = 'crest';
             if(!value.crestURI || value.crestURI === 'null'){
@@ -19,9 +18,10 @@ const leagueTableDatabase = {
             $('.BigTable').append("<tr><th scope='row'>"+value.position+"</th><td><img class='"+classes+"' src='"+value.crestURI+ "'/>"+value.teamName+"</td><td>"+value.points+"</td><td>"+value.playedGames+"</td><td>"+value.wins+"</td><td>"+value.draws+"</td><td>"+value.losses+"</td></tr>");
             });
         },
-            error: function(error){
-                console.log("det blev fel LOL" + error);
-            }
+        error: function(error){
+            console.log("det blev fel LOL" + error);
+        }
+        
         });
     },
 
@@ -95,65 +95,91 @@ const fixturesDataBase = {
             headers: {
             'X-Auth-Token': 'bc1c9459624a4143a7d7e78e5e00e85b'
         },
-        success: (response) => {
-            data = response;
-            console.log(data);
+        success: (data) => {
             $.each(data.fixtures, function(key, value){
                 let comp = value._links.competition.href;
                 if(comp.indexOf(id) > -1){
-                    $('.fixtures').append('<li>'+value.homeTeamName+ ' - ' +value.awayTeamName+ '</li>');
+                    $('.fixtures').append('<li>' +value.homeTeamName+ ' - ' +value.awayTeamName+ '</li>');
                 }
             });
         }            
         })
     },
 
+    displayTime: function(){
+        $('.matches').empty();
+        $.ajax({
+            method:'GET',
+            url: 'http://api.football-data.org/v1/fixtures/',
+            headers: {
+            'X-Auth-Token': 'bc1c9459624a4143a7d7e78e5e00e85b'
+        },
+        success:(data) =>{
+            $('.matches').append('Fixtures from ' + data.timeFrameStart + ' until ' +  data.timeFrameEnd);
+        }
+        
+        })
+        
+    },
+
     getPlFixtures: function(){
         fixturesDataBase.getFixtures('426');
+        fixturesDataBase.displayTime();
     },
 
     getCsFixtures: function(){
         fixturesDataBase.getFixtures('427');
+        fixturesDataBase.displayTime();
     },
 
     getLoneFixtures: function(){
         fixturesDataBase.getFixtures('428');
+        fixturesDataBase.displayTime();
     },
 
     getBund1Fixtures: function(){
         fixturesDataBase.getFixtures('430');
+        fixturesDataBase.displayTime();
     },
     
     getBund2Fixtures: function(){
         fixturesDataBase.getFixtures('431');
+        fixturesDataBase.displayTime();
     },
 
     getErdFixtures: function(){
         fixturesDataBase.getFixtures('433');
+        fixturesDataBase.displayTime();
     },
 
     getLig1Fixtures: function(){
         fixturesDataBase.getFixtures('434');
+        fixturesDataBase.displayTime();
     },
 
     getLig2Fixtures: function(){
         fixturesDataBase.getFixtures('435');
+        fixturesDataBase.displayTime();
     },
 
     getLaligaFixtures: function(){
         fixturesDataBase.getFixtures('436');
+        fixturesDataBase.displayTime();
     },
 
     getAdelanteFixtures: function(){
         fixturesDataBase.getFixtures('437');
+        fixturesDataBase.displayTime();
     },
 
     getSerieAFixtures: function(){
         fixturesDataBase.getFixtures('438');
+        fixturesDataBase.displayTime();
     },
 
     getPrimLigaFixtures: function(){
         fixturesDataBase.getFixtures('439');
+        fixturesDataBase.displayTime();
     },
 };
 
