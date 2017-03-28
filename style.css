@@ -22,8 +22,28 @@
 }
 
 .crest{
-    height:30px;
-    width:30px;
+    height:35px;
+    width:35px;
+    padding-right: 5px;
+}
+
+li{
+    list-style: none;    
+}
+
+ul{
+    padding:0px !important;
+}
+
+.liMatches{
+    font-weight:bold;
+    padding-left:3px;
+}
+
+.fixturediv{
+    display:flex;
+    flex-direction: column;
+    justify-content:flex-start;
 }
 
 .frontimg{

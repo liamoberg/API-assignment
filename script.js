@@ -19,7 +19,7 @@ const leagueTableDatabase = {
             });
         },
         error: function(error){
-            console.log("det blev fel LOL" + error);
+            ("Något gick snett" + error);
         }
         
         });
@@ -99,7 +99,7 @@ const fixturesDataBase = {
             $.each(data.fixtures, function(key, value){
                 let comp = value._links.competition.href;
                 if(comp.indexOf(id) > -1){
-                    $('.fixtures').append('<li>' +value.homeTeamName+ ' - ' +value.awayTeamName+ '</li>');
+                    $('.fixtures').append('<li class="liMatches">' +value.homeTeamName+ ' - ' +value.awayTeamName+ '</li>');
                 }
             });
         }            
@@ -183,7 +183,7 @@ const fixturesDataBase = {
     },
 };
 
-$( document ).ready(function() {
+$(document).ready(function(){  
     document.getElementById('champ').addEventListener('click', leagueTableDatabase.getCsTable);
     document.getElementById('premier').addEventListener('click', leagueTableDatabase.getPlTable);
     document.getElementById('Lone').addEventListener('click', leagueTableDatabase.getLoneTable);
@@ -197,5 +197,4 @@ $( document ).ready(function() {
     document.getElementById('seriea').addEventListener('click', leagueTableDatabase.getSerieATable);
     document.getElementById('primliga').addEventListener('click', leagueTableDatabase.getPrimLigaTable);
 });
-
 
