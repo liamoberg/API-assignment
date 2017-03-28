@@ -1,5 +1,5 @@
 const leagueTableDatabase = {
-
+    
     getTable: function(url){
         $('.BigTable').empty();
         $.ajax({

@@ -46,15 +46,6 @@ ul{
     justify-content:flex-start;
 }
 
-.frontimg{
-    background-image:url('img/frontpage.jpg');
-    height: 100vh;
-    width: 100vw;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
 .footlang{
     color:white;
 }

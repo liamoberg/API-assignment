@@ -31,9 +31,9 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">England <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a id='premier' href="tables.html">Premier League</a></li>
-            <li><a id='champ' href='tables.html'>The championship</a></li>
-            <li><a id='Lone' href="tables.html">League One</a></li>
+            <li><a id='premier' href="#">Premier League</a></li>
+            <li><a id='champ' href='#'>The championship</a></li>
+            <li><a id='Lone' href="#">League One</a></li>
           </ul>
         </li>
       </ul>
@@ -41,8 +41,8 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Germany <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a id='bund1' href="tables.html">1. Bundesliga</a></li>
-            <li><a id='bund2' href="tables.html">2. Bundesliga</a></li>
+            <li><a id='bund1' href="#">1. Bundesliga</a></li>
+            <li><a id='bund2' href="#">2. Bundesliga</a></li>
           </ul>
         </li>
       </ul>
@@ -50,8 +50,8 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">France <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a id='lig1' href="tables.html">Ligue 1</a></li>
-            <li><a id='lig2' href="tables.html">Ligue 2</a></li>
+            <li><a id='lig1' href="#">Ligue 1</a></li>
+            <li><a id='lig2' href="#">Ligue 2</a></li>
           </ul>
         </li>
       </ul>
@@ -59,7 +59,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Netherlands <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a id='erd' href="tables.html">Eredivisie</a></li>
+            <li><a id='erd' href="#">Eredivisie</a></li>
           </ul>
         </li>
       </ul>
@@ -67,8 +67,8 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Spain <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a id='laliga' href="tables.html">La Liga</a></li>
-            <li><a id='adelante' href="tables.html">Liga Adelante</a></li>
+            <li><a id='laliga' href="#">La Liga</a></li>
+            <li><a id='adelante' href="#">Liga Adelante</a></li>
           </ul>
         </li>
       </ul>
@@ -76,7 +76,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Italy <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a id='seriea' href="tables.html">Serie A</a></li>
+            <li><a id='seriea' href="#">Serie A</a></li>
           </ul>
         </li>
       </ul>
@@ -84,17 +84,36 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Portugal <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a id='primliga' href="tables.html">Primeira Liga</a></li>
+            <li><a id='primliga' href="#">Primeira Liga</a></li>
           </ul>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-    <div class='container-fluid frontimg'>
-        <h1 class='footlang'>
-            TABLES AND FIXTURES FROM ALL TOP-EUROPEAN LEAGUES!
-        </h1>
+<div class='container'>
+    <div class='row'>
+    <div class='col-lg-12'>
+        <table class='table table-striped table-responsive'>
+            <thead class='thead-default'>
+                <th>#</th>
+                <th>Team</th>
+                <th>Points</th>
+                <th>GP</th>
+                <th>W</th>
+                <th>D</th>
+                <th>L</th>
+            </thead>
+            <tbody class='BigTable'>
+            </tbody>
+        </table>
+        </div>
+        <div class='col-lg-12 fixturediv'>
+            <h1 class='matches'></h1>
+                <ul class='fixtures'>
+                </ul>
+        </div>
     </div>
+</div>
 </body>
 </html>
