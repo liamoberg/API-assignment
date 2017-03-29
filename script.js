@@ -11,13 +11,19 @@ const leagueTableDatabase = {
             'X-Auth-Token': 'bc1c9459624a4143a7d7e78e5e00e85b'
         },
         success: (data) => {
-        //
+        // $.each that goes through the object that is standing.
         $.each(data.standing, function(key, value){
+            $('.mainimg').fadeOut();
+            $('.table').fadeIn();
+            // Declares the class 'crest' as a variabel.
             var classes = 'crest';
+            // If statement that checks if there is a crestURI or if it is null, it sets classes and value.crestuURI to nothing. 
+            // This is so teams that dont have a crestURI dont get the css styling i've done for the teams that have crestURI.
             if(!value.crestURI || value.crestURI === 'null'){
                 classes = '';
                 value.crestURI = '';
             }
+            // Appends all the data to a tbody that is already created.
             $('.BigTable').append("<tr><th scope='row'>"+value.position+"</th><td><img class='"+classes+"' src='"+value.crestURI+ "'/>"+value.teamName+"</td><td>"+value.points+"</td><td>"+value.playedGames+"</td><td>"+value.wins+"</td><td>"+value.draws+"</td><td>"+value.losses+"</td></tr>");
             });
         },
@@ -27,7 +33,8 @@ const leagueTableDatabase = {
         
         });
     },
-
+    // Functions that run the code above for all the different leagues and the code that gets all the fixtures from
+    // different leagues.
     getPlTable: function(){
         leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/426/leagueTable');
         fixturesDataBase.getPlFixtures();
@@ -90,8 +97,10 @@ const leagueTableDatabase = {
 };
 
 const fixturesDataBase = {
+    // The function that displays the fixtures for all the leagues. Takes 1 parameter.
     getFixtures: function (id){
         $('.fixtures').empty();
+        $('.fixtures').fadeIn();
         $.ajax({
             method:'GET',
             url: 'http://api.football-data.org/v1/fixtures/',
@@ -99,9 +108,13 @@ const fixturesDataBase = {
             'X-Auth-Token': 'bc1c9459624a4143a7d7e78e5e00e85b'
         },
         success: (data) => {
+            // Goes through data.fixtures.
             $.each(data.fixtures, function(key, value){
+                // declares a let that is the href for every competition.
                 let comp = value._links.competition.href;
+                // Checks the indexOf the link is the same as the ID from the parameter.
                 if(comp.indexOf(id) > -1){
+                    // if that is true it appends all the fixtures to the ul I've already made.
                     $('.fixtures').append('<li class="liMatches">' +value.homeTeamName+ ' - ' +value.awayTeamName+ '</li>');
                 }
             });
@@ -112,7 +125,9 @@ const fixturesDataBase = {
         })
     },
 
+    // simple function that gets the timeframe for the fixtures.
     displayTime: function(){
+        $('.matches').add('.display').fadeIn();
         $('.matches').empty();
         $.ajax({
             method:'GET',
@@ -131,6 +146,7 @@ const fixturesDataBase = {
         
     },
 
+    // functions that calls the 2 functions above, getFixtures has the id of the league as parameter.
     getPlFixtures: function(){
         fixturesDataBase.getFixtures('426');
         fixturesDataBase.displayTime();
@@ -192,7 +208,10 @@ const fixturesDataBase = {
     },
 };
 
+
+// JQuery function that only runs when DOM is ready.
 $(document).ready(function(){  
+    // All the buttons that listens for a click and then runs the function that gets all the tables and fixtures.
     document.getElementById('champ').addEventListener('click', leagueTableDatabase.getCsTable);
     document.getElementById('premier').addEventListener('click', leagueTableDatabase.getPlTable);
     document.getElementById('Lone').addEventListener('click', leagueTableDatabase.getLoneTable);
