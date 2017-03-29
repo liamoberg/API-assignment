@@ -28,7 +28,7 @@ const leagueTableDatabase = {
             });
         },
         error: function(error){
-            alert("Något gick snett" + error);
+            alert("Something went wrong " + error);
         }
         
         });
@@ -120,7 +120,7 @@ const fixturesDataBase = {
             });
         },
         error:(error) => {
-            alert('Något gick snett ' + error);
+            alert('Something went wrong ' + error);
         }
         })
     },
@@ -139,7 +139,7 @@ const fixturesDataBase = {
             $('.matches').append('Fixtures from ' + data.timeFrameStart + ' until ' +  data.timeFrameEnd);
         },
         error:(error) => {
-            alert('Något gick snett ' + error);
+            alert('Something went wrong ' + error);
         }
         
         })
