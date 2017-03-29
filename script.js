@@ -15,16 +15,15 @@ const leagueTableDatabase = {
         $.each(data.standing, function(key, value){
             $('.mainimg').fadeOut();
             $('.table').fadeIn();
-            // Declares the class 'crest' as a variabel.
-            var classes = 'crest';
-            // If statement that checks if there is a crestURI or if it is null, it sets classes and value.crestuURI to nothing. 
-            // This is so teams that dont have a crestURI dont get the css styling i've done for the teams that have crestURI.
+            // D
+            let crest = 'crest';
+            // If statement that checks if there is a crestURI or if it is null, it sets crest and value.crestuURI to nothing. 
             if(!value.crestURI || value.crestURI === 'null'){
-                classes = '';
+                crest = '';
                 value.crestURI = '';
             }
             // Appends all the data to a tbody that is already created.
-            $('.BigTable').append("<tr><th scope='row'>"+value.position+"</th><td><img class='"+classes+"' src='"+value.crestURI+ "'/>"+value.teamName+"</td><td>"+value.points+"</td><td>"+value.playedGames+"</td><td>"+value.wins+"</td><td>"+value.draws+"</td><td>"+value.losses+"</td></tr>");
+            $('.BigTable').append("<tr><th scope='row'>"+value.position+"</th><td><img class='"+crest+"' src='"+value.crestURI+ "'/>"+value.teamName+"</td><td>"+value.points+"</td><td>"+value.playedGames+"</td><td>"+value.wins+"</td><td>"+value.draws+"</td><td>"+value.losses+"</td></tr>");
             });
         },
         error: function(error){
