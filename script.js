@@ -1,6 +1,8 @@
 const leagueTableDatabase = {
     
+    // The main function that gets the leaguetable for all the leagues. Takes the URL as a parameter.
     getTable: function(url){
+        // First of all it emptys the current shown table.
         $('.BigTable').empty();
         $.ajax({
         method:'GET',
@@ -9,6 +11,7 @@ const leagueTableDatabase = {
             'X-Auth-Token': 'bc1c9459624a4143a7d7e78e5e00e85b'
         },
         success: (data) => {
+        //
         $.each(data.standing, function(key, value){
             var classes = 'crest';
             if(!value.crestURI || value.crestURI === 'null'){
@@ -19,7 +22,7 @@ const leagueTableDatabase = {
             });
         },
         error: function(error){
-            ("Något gick snett" + error);
+            alert("Något gick snett" + error);
         }
         
         });
@@ -102,7 +105,10 @@ const fixturesDataBase = {
                     $('.fixtures').append('<li class="liMatches">' +value.homeTeamName+ ' - ' +value.awayTeamName+ '</li>');
                 }
             });
-        }            
+        },
+        error:(error) => {
+            alert('Något gick snett ' + error);
+        }
         })
     },
 
@@ -114,8 +120,11 @@ const fixturesDataBase = {
             headers: {
             'X-Auth-Token': 'bc1c9459624a4143a7d7e78e5e00e85b'
         },
-        success:(data) =>{
+        success:(data) => {
             $('.matches').append('Fixtures from ' + data.timeFrameStart + ' until ' +  data.timeFrameEnd);
+        },
+        error:(error) => {
+            alert('Något gick snett ' + error);
         }
         
         })
