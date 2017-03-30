@@ -35,62 +35,62 @@ const leagueTableDatabase = {
     // Functions that run the code above for all the different leagues and the code that gets all the fixtures from
     // different leagues.
     getPlTable: function(){
-        leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/426/leagueTable');
+        leagueTableDatabase.getTable('https://api.football-data.org/v1/competitions/426/leagueTable');
         fixturesDataBase.getPlFixtures();
     },
 
     getCsTable: function(){
-        leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/427/leagueTable');
+        leagueTableDatabase.getTable('https://api.football-data.org/v1/competitions/427/leagueTable');
         fixturesDataBase.getCsFixtures();
     },
     
     getLoneTable: function(){
-        leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/428/leagueTable');
+        leagueTableDatabase.getTable('https://api.football-data.org/v1/competitions/428/leagueTable');
         fixturesDataBase.getLoneFixtures();
     },
 
     getBund1Table: function(){
-        leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/430/leagueTable');
+        leagueTableDatabase.getTable('https://api.football-data.org/v1/competitions/430/leagueTable');
         fixturesDataBase.getBund1Fixtures();
     },   
 
     getBund2Table: function(){
-        leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/431/leagueTable');
+        leagueTableDatabase.getTable('https://api.football-data.org/v1/competitions/431/leagueTable');
         fixturesDataBase.getBund2Fixtures();
     },
 
     getErdTable: function(){
-        leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/433/leagueTable');
+        leagueTableDatabase.getTable('https://api.football-data.org/v1/competitions/433/leagueTable');
         fixturesDataBase.getErdFixtures();
     },
 
     getLig1Table: function(){
-        leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/434/leagueTable');
+        leagueTableDatabase.getTable('https://api.football-data.org/v1/competitions/434/leagueTable');
         fixturesDataBase.getLig1Fixtures();
     },
 
     getLig2Table: function(){
-        leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/435/leagueTable');
+        leagueTableDatabase.getTable('https://api.football-data.org/v1/competitions/435/leagueTable');
         fixturesDataBase.getLig2Fixtures();
     },
 
     getLaligaTable: function(){
-        leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/436/leagueTable');
+        leagueTableDatabase.getTable('https://api.football-data.org/v1/competitions/436/leagueTable');
         fixturesDataBase.getLaligaFixtures();
     },
 
     getAdelanteTable: function(){
-        leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/437/leagueTable');
+        leagueTableDatabase.getTable('https://api.football-data.org/v1/competitions/437/leagueTable');
         fixturesDataBase.getAdelanteFixtures();
     },
 
     getSerieATable: function(){
-        leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/438/leagueTable');
+        leagueTableDatabase.getTable('https://api.football-data.org/v1/competitions/438/leagueTable');
         fixturesDataBase.getSerieAFixtures();
     },
 
     getPrimLigaTable: function(){
-        leagueTableDatabase.getTable('http://api.football-data.org/v1/competitions/439/leagueTable');
+        leagueTableDatabase.getTable('https://api.football-data.org/v1/competitions/439/leagueTable');
         fixturesDataBase.getPrimLigaFixtures();
     }
 };
@@ -102,12 +102,12 @@ const fixturesDataBase = {
         $('.fixtures').fadeIn();
         $.ajax({
             method:'GET',
-            url: 'http://api.football-data.org/v1/fixtures/',
+            url: 'https://api.football-data.org/v1/fixtures/',
             headers: {
             'X-Auth-Token': 'bc1c9459624a4143a7d7e78e5e00e85b'
         },
         success: (data) => {
-            // Goes through data.fixtures.
+            // Goes through the object fixtures
             $.each(data.fixtures, function(key, value){
                 // declares a let that is the href for every competition.
                 let comp = value._links.competition.href;
@@ -130,7 +130,7 @@ const fixturesDataBase = {
         $('.matches').empty();
         $.ajax({
             method:'GET',
-            url: 'http://api.football-data.org/v1/fixtures/',
+            url: 'https://api.football-data.org/v1/fixtures/',
             headers: {
             'X-Auth-Token': 'bc1c9459624a4143a7d7e78e5e00e85b'
         },
