@@ -23,3 +23,5 @@ Man skulle säkert kunna dela upp funktionerna på lite bättre sätt men det f�
 * Mer info i kommande matcher
 
 [Project link](https://mrlangboi.github.io/API-assignment/)
+
+![](https://media.giphy.com/media/3o6gEaYbewKku0GwPS/giphy.gif)
