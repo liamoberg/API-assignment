@@ -22,4 +22,4 @@ Man skulle säkert kunna dela upp funktionerna på lite bättre sätt men det f�
 * Söka på spelare
 * Mer info i kommande matcher
 
-[Project link](https://mrlangboi.github.io/API-assignment/)
+[Project link](https://liamoberg.github.io/API-assignment/)
